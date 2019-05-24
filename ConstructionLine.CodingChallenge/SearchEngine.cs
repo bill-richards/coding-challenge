@@ -15,9 +15,9 @@ namespace ConstructionLine.CodingChallenge
 
         public SearchResults Search(SearchOptions options)
         {
-
             var queryResult = (from shirt in _shirts
-                where options.Colors.Contains(shirt.Color)
+                where (options.Colors.Contains(shirt.Color) || !options.Colors.Any())
+                      && (options.Sizes.Contains(shirt.Size) || !options.Sizes.Any())
                         select shirt).ToList();
 
             var colorCount = new List<ColorCount>();
