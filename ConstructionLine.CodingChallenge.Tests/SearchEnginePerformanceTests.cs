@@ -23,17 +23,16 @@ namespace ConstructionLine.CodingChallenge.Tests
             _searchEngine = new SearchEngine(_shirts);
         }
 
-
         [Test]
         public void PerformanceTest()
         {
-            var sw = new Stopwatch();
-            sw.Start();
-
             var options = new SearchOptions
             {
                 Colors = new List<Color> { Color.Red }
             };
+
+            var sw = new Stopwatch();
+            sw.Start();
 
             var results = _searchEngine.Search(options);
 
@@ -44,5 +43,6 @@ namespace ConstructionLine.CodingChallenge.Tests
             AssertSizeCounts(_shirts, options, results.SizeCounts);
             AssertColorCounts(_shirts, options, results.ColorCounts);
         }
+
     }
 }

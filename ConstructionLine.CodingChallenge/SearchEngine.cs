@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace ConstructionLine.CodingChallenge
 {
@@ -9,18 +10,29 @@ namespace ConstructionLine.CodingChallenge
         public SearchEngine(List<Shirt> shirts)
         {
             _shirts = shirts;
-
-            // TODO: data preparation and initialisation of additional data structures to improve performance goes here.
-
         }
 
 
         public SearchResults Search(SearchOptions options)
         {
-            // TODO: search logic goes here.
+
+            var queryResult = (from shirt in _shirts
+                where options.Colors.Contains(shirt.Color)
+                        select shirt).ToList();
+
+            var colorCount = new List<ColorCount>();
+            foreach (var color in Color.All)
+                colorCount.Add(new ColorCount {Color = color, Count = queryResult.Count(s => s.Color == color)});
+
+            var sizeCount = new List<SizeCount>();
+            foreach (var size in Size.All)
+                sizeCount.Add(new SizeCount { Size = size, Count = queryResult.Count(s => s.Size == size) });
 
             return new SearchResults
             {
+                Shirts = queryResult,
+                SizeCounts = sizeCount,
+                ColorCounts = colorCount
             };
         }
     }
