@@ -1,4 +1,6 @@
-# Construction Line code challenge
+_**MY understanding** is that the search criteria are **anded** rather than **ored** and the solution has been provided according to this understanding._ 
+
+Construction Line code challenge
 
 The code challenge consists in the implementation of a simple search engine for shirts.
 
@@ -22,6 +24,8 @@ The results should include, as well as the shirts matching the search options, t
     ColorCounts = List<ColorCount> { Red(1), Blue(0), Yellow(0), White(0), Black(0)}
 }
 ```
+
+
 
 The search engine logic sits in SearchEngine.cs and should be implemented by the candidate. Feel free to use any additional data structures, classes or libraries to prepare the data before the actual search. The initalisation of these should sit in the constructor of the search engine.
 
